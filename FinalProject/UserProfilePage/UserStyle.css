@@ -1,0 +1,87 @@
+.list-group-item {
+    margin-bottom: 10px;
+}
+
+.added-task {
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.task-buttons {
+    display: inline-block;
+}
+
+.completed-task {
+    text-decoration: line-through;
+}
+
+.larger-text {
+    font-size: 20px;
+}
+#to-do-list {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 20px;
+}
+.countdown-container {
+    text-align: center;
+    margin-top: 30px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.timer {
+    font-size: 36px;
+    font-weight: bold;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+.timer-controls {
+    margin-top: 20px;
+}
+
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button#start-timer {
+    background-color: #0a53be;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+button#start-timer:hover {
+    background-color: #003d89;
+}
+button#stop-timer {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+button#stop-timer:hover {
+    background-color: #999;
+    color: #333;
+}
+
+@media (max-width: 576px) {
+
+}
+@media (min-width: 577px) and (max-width: 992px) {
+
+}
+@media (min-width: 993px) {
+
+}

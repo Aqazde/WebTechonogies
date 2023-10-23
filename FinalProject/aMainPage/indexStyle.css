@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f2f2;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: #0a53be;
+}
+
+.about-us, .image-carousel, .reservation, .reviews, .contact-info {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.about-us h2, .image-carousel h2, .reservation h2, .reviews h2, .contact-info h2 {
+    color: #0a53be;
+}
+
+.reservation form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.reservation h2 {
+    color: #0a53be;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #0a53be;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #003d89;
+}
+.reviews p {
+    font-style: italic;
+    color: #666;
+}
+.customer-img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #0a53be;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+.carousel-inner img {
+    width: auto;
+    max-height: 55%;
+    margin: 0 auto;
+    display: block;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #0a53be;
+    padding: 15px;
+    border-radius: 50%;
+}
+.carousel-control-prev-icon:before, .carousel-control-next-icon:before {
+    color: #fff;
+    font-size: 24px;
+}
+
+@media (max-width: 576px) {
+
+}
+@media (min-width: 577px) and (max-width: 992px) {
+
+}
+@media (min-width: 993px) {
+
+}
