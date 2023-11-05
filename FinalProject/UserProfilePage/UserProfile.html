@@ -82,7 +82,10 @@
     <button class="btn btn-secondary" id="stop-timer">Stop</button>
   </div>
 </section>
-
+<audio id="timerSound">
+  <source src="sound-effect1.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 <script>
   // Function to delete a task from the To-Do List
@@ -172,7 +175,15 @@
     startButton.removeAttribute('disabled');
     resumeButton.setAttribute('disabled', 'disabled');
     alert("Time is UP");
+    // Play the sound effect
+    const timerSound = document.getElementById("timerSound");
+    timerSound.play();
+    // Add animation to the countdown timer
+    const timerDisplay = document.getElementById("countdown-timer");
+    timerDisplay.classList.add("flash");
   }
+
+
 
   // Event listener for the "Start" button
   startButton.addEventListener("click", function () {
@@ -209,6 +220,8 @@
       resumeButton.removeAttribute('disabled');
       stopButton.setAttribute('disabled', 'disabled');
     }
+    // Stop the flash animation and reset it
+    timerDisplay.classList.remove("flash");
   });
 
   // Event listener for the "Resume" button
