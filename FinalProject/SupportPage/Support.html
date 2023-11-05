@@ -54,6 +54,7 @@
         <div class="mb-3">
             <label for="message" class="form-label">Message</label>
             <textarea class="form-control" id="message" rows="4" required></textarea>
+            <div class="small" id="charCountInfo">Minimum 5 words and a maximum of 500 characters.</div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -72,10 +73,11 @@
         const confirmationAlert = document.getElementById("confirmationAlert");
         confirmationAlert.style.display = "block";
         // Automatically close the confirmation alert after 10 seconds
-        setTimeout(function() {
+        setTimeout(function () {
             confirmationAlert.style.display = "none";
         }, 10000); // 10 seconds
     }
+
     // Function to show loading spinner
     function showLoadingSpinner() {
         const loadingSpinner = document.getElementById("loadingSpinner");
@@ -87,19 +89,52 @@
         const loadingSpinner = document.getElementById("loadingSpinner");
         loadingSpinner.style.display = "none";
     }
+
+    // Add character limit and word count validation for the support form
+    const messageTextArea = document.getElementById("message");
+    const charCountInfo = document.getElementById("charCountInfo");
+
+    messageTextArea.addEventListener("input", function () {
+        const message = messageTextArea.value;
+        const words = message.trim().split(/\s+/).length;
+        const characters = message.length;
+
+        // Check word count and character limit
+        if (words < 5) {
+            charCountInfo.textContent = "Please enter at least 5 words.";
+        } else if (characters > 500) {
+            charCountInfo.textContent = "Character limit exceeded (500 characters max).";
+        } else {
+            charCountInfo.textContent = `Words: ${words} | Characters: ${characters}/500`;
+        }
+    });
+
     const supportForm = document.getElementById("support-form");
 
     supportForm.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent the form from submitting
 
-        // Simulate loading by showing the spinner
-        showLoadingSpinner();
+        const message = messageTextArea.value;
+        const words = message.trim().split(/\s+/).length;
+        const characters = message.length;
 
-        // Hide the spinner and show the confirmation alert
-        setTimeout(function () {
-            hideLoadingSpinner();
-            showConfirmationAlert();
-        }, 2000); // Simulate a 2-second delay
+        // Validate word count and character limit before submitting
+        if (words < 5) {
+            alert("Please enter at least 5 words.");
+        } else if (characters > 500) {
+            alert("Character limit exceeded (500 characters max).");
+        } else {
+            // Continue with the form submission logic
+
+            // Simulate loading by showing the spinner
+            showLoadingSpinner();
+
+            // Hide the spinner and show the confirmation alert
+            setTimeout(function () {
+                hideLoadingSpinner();
+                showConfirmationAlert();
+            }, 2000); // Simulate a 2-second delay
+        }
     });
 </script>
 </body>
