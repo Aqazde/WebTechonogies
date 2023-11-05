@@ -78,6 +78,7 @@
     <input type="number" id="minutes" min="0" placeholder="Minutes">
     <input type="number" id="seconds" min="0" placeholder="Seconds">
     <button class="btn btn-primary" id="start-timer">Start</button>
+    <button class="btn btn-secondary" id="resume-timer" disabled>Resume</button>
     <button class="btn btn-secondary" id="stop-timer">Stop</button>
   </div>
 </section>
@@ -151,8 +152,10 @@
   const secondsInput = document.getElementById("seconds");
   const startButton = document.getElementById("start-timer");
   const stopButton = document.getElementById("stop-timer");
+  const resumeButton = document.getElementById("resume-timer");
   let timerInterval;
   let remainingTime = 0;
+  let isTimerRunning = false;
 
   // Function to update the timer display
   function updateTimerDisplay() {
@@ -165,30 +168,67 @@
   // Function to show an alert when the timer is up
   function timeIsUp() {
     clearInterval(timerInterval);
+    isTimerRunning = false;
+    startButton.removeAttribute('disabled');
+    resumeButton.setAttribute('disabled', 'disabled');
     alert("Time is UP");
   }
 
   // Event listener for the "Start" button
   startButton.addEventListener("click", function () {
-    const hours = parseInt(hoursInput.value) || 0;
-    const minutes = parseInt(minutesInput.value) || 0;
-    const seconds = parseInt(secondsInput.value) || 0;
+    if (!isTimerRunning) {
+      const hours = parseInt(hoursInput.value) || 0;
+      const minutes = parseInt(minutesInput.value) || 0;
+      const seconds = parseInt(secondsInput.value) || 0;
 
-    remainingTime = hours * 3600 + minutes * 60 + seconds;
-    updateTimerDisplay();
+      remainingTime = hours * 3600 + minutes * 60 + seconds;
+      updateTimerDisplay();
+      isTimerRunning = true;
 
-    timerInterval = setInterval(function () {
-      if (remainingTime > 0) {
-        remainingTime--;
-        updateTimerDisplay();
-      } else {
-        timeIsUp();
-      }
-    }, 1000);
+      timerInterval = setInterval(function () {
+        if (remainingTime > 0) {
+          remainingTime--;
+          updateTimerDisplay();
+        } else {
+          timeIsUp();
+        }
+      }, 1000);
+
+      startButton.setAttribute('disabled', 'disabled');
+      resumeButton.setAttribute('disabled', 'disabled');
+      stopButton.removeAttribute('disabled');
+    }
   });
+
   // Event listener for the "Stop" button
   stopButton.addEventListener("click", function () {
-    clearInterval(timerInterval);
+    if (isTimerRunning) {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      startButton.removeAttribute('disabled');
+      resumeButton.removeAttribute('disabled');
+      stopButton.setAttribute('disabled', 'disabled');
+    }
+  });
+
+  // Event listener for the "Resume" button
+  resumeButton.addEventListener("click", function () {
+    if (!isTimerRunning) {
+      isTimerRunning = true;
+
+      timerInterval = setInterval(function () {
+        if (remainingTime > 0) {
+          remainingTime--;
+          updateTimerDisplay();
+        } else {
+          timeIsUp();
+        }
+      }, 1000);
+
+      startButton.setAttribute('disabled', 'disabled');
+      resumeButton.setAttribute('disabled', 'disabled');
+      stopButton.removeAttribute('disabled');
+    }
   });
 </script>
 </body>
