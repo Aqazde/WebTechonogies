@@ -98,7 +98,9 @@ body {
     flex-grow: 1;
     height: 110px;
 }
-
+footer p {
+    color: #666;
+}
 @media (max-width: 576px) {
     .vertical-menu {
         display: none;
